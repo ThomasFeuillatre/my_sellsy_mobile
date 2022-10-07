@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_sellsy/router.dart';
+import 'package:my_sellsy/utils/app_colors.dart';
 
 import 'models/user.dart';
 
@@ -20,9 +21,7 @@ class MySellsyApp extends ConsumerWidget {
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,
       title: 'flutter_riverpod + go_router Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primaryColor: AppColors.darkBlue),
     );
   }
 }
