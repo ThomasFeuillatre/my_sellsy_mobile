@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class User {
@@ -14,10 +15,11 @@ class UserState extends StateNotifier<User?> {
 
   Future<void> login(String email, String password) async {
     // This mocks a login attempt with email and password
-    state = await Future.delayed(
-      const Duration(milliseconds: 750),
-      () => User(name: "My Name", email: "My Email"),
-    );
+    FirebaseAuth.instance.signInWithProvider(GoogleAuthProvider());
+    // state = await Future.delayed(
+    //   const Duration(milliseconds: 750),
+    //   () => User(name: "My Name", email: "My Email"),
+    // );
   }
 
   Future<void> logout() async {
@@ -29,3 +31,5 @@ class UserState extends StateNotifier<User?> {
 final authProvider = StateNotifierProvider<UserState, User?>((ref) {
   return UserState();
 });
+
+final firebaseAuthProvider = Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
